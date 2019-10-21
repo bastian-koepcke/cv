@@ -3,9 +3,10 @@
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License version 1.3c,
 % available at http://www.latex-project.org/lppl/.
-\documentclass[11pt,a4paper,sans]{moderncv}        % possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
+\documentclass[11pt,a4paper]{moderncv}        % possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
 
 \usepackage[utf8]{inputenc}
+\usepackage{eurosym}
 
 % moderncv themes
 \moderncvstyle{classic}                             % style options are 'casual' (default), 'classic', 'banking', 'oldstyle' and 'fancy'
@@ -23,7 +24,7 @@
 \firstname{Bastian}
 \familyname{Köpcke}
 \address{Einsteinstraße 62}{48149 Münster, Germany}
-\phone[fixed]{+49~(0)~251~83-32758}
+%\phone[fixed]{+49~(0)~251~83-32758}
 \email{bastian.koepcke@wwu.de}
 %\photo[4cm]{passfoto}
 
@@ -72,7 +73,7 @@ maxbibnames=50]{biblatex}
 % Got hashes from the bbl file
 \renewcommand*{\boldnames}{}
 \forcsvlist{\listadd\boldnames}
-  {{dfe6c38b200b67c8cafef47f5ff406e3}}
+  {{8666bc4e76034dfb97e0acaa5f625527}}
 
 % Only print a year once
 \newcounter{currentYear}
@@ -96,22 +97,31 @@ maxbibnames=50]{biblatex}
 %            university education
 %----------------------------------------------------------------------------------
 \section{University Education}
-  \cventry{since 2018}
-          {Ph.D. studies}{University of Münster}{Münster, Germany}{}{
-          Supervisor: Prof. Sergei Gorlatch\\
-          Main research interests: High-level performance-portable programming abstractions for high-performance computing,
-          Programming and optimization of programs for modern multi- and many-core processors.}
-	\cventry{2014 -- 2018}
-					{Master of Science in computer science}
-          {University of Münster}{Münster, Germany}{}
-					{Thesis title: \textit{Implementing and Optimizing Fast Fourier Transforms in Lift},\\
+    \cventry{since 2018}
+            {Ph.D. studies}{University of Münster}{Münster, Germany}{}
+            {Supervisor: Prof. Sergei Gorlatch, Dr. Michel Steuwer (University of Glasgow)\\
+             Main research interests:
+             High-level functional performance-portable programming abstractions for high-performance computing.
+             I am especially interested in developing a functional pattern-based intermediate array language and formalizing its translation process to imperative code.
+             My goal is to have a pattern-based intermediate array language where legal expressions are translated to provably valid GPU programs which achieve high-performance.} 
+
+    \cventry{2014 -- 2018}
+		    {Master of Science in computer science}
+            {University of Münster}{Münster, Germany}
+            {}
+%            {\textit{Final grade in computer science: 1.1 (with distinction)}}
+            {Thesis title: \textit{Implementing and Optimizing Fast Fourier Transforms in Lift},\\
            In this thesis, I methodically derive expressions for FFTs based on high-level functional primitives and extend the Lift compiler framework to generate high-performance GPU code from the derived expressions.}
+%            \textit{Grade for thesis: 1.0}}
 
 	\cventry{2011 -- 2014}
-					{Bachelor of Science in computer science}
-          {University of Münster}{Münster, Germany}{}
-					{Thesis title: \textit{Implementing SDN-based Multicast in RTF},\\
+            {Bachelor of Science in computer science}
+            {University of Münster}{Münster, Germany}
+            {}
+%            {\textit{Final grade in computer science:  }}
+            {Thesis title: \textit{Implementing SDN-based Multicast in RTF},\\
           In this thesis, I extend the communication layer of the Real-Time Framework, developed at the University of Münster, to support multicast in software defined networks.}
+%            \textit{Grade for thesis: }}
 
 %----------------------------------------------------------------------------------
 %            publications
@@ -123,6 +133,49 @@ maxbibnames=50]{biblatex}
 %  to redefine the heading string ("Publications"): \renewcommand{\refname}{Articles}
 %\bibliographystyle{plain}
 %\bibliography{publications}
+
+\newpage
+%----------------------------------------------------------------------------------
+%            research visits
+%----------------------------------------------------------------------------------
+\section{Research Visits}
+%    \cventry{from\\-- to}
+%			 {Visit Title (amount of time)}
+%		     {Institution}
+%		     {location}{}
+%			 {Short Description}
+    \cventry{08/2019\\-- 10/2019}
+			{Visiting Researcher (5 weeks)}
+		    {University of Glasgow}
+		    {Glasgow, UK}{}
+			{Funded by HiPEAC\\
+            During this visit, I investigated the translation of a functional pattern-based intermediate representation for the Lift language into an intermediate imperative language from which OpenCL code is generated.
+            My main focus was on higher control over memory allocations (e.g. OpenCL address spaces) in the functional language to generate high-performance OpenCL kernels for GEMM.}
+    \cventry{01/2019\\-- 03/2019}
+			{Visiting Researcher (2 months)}
+		    {University of Glasgow}
+		    {Glasgow, UK}{}
+			{Funded by HPC-Europa3\\
+             During this visit, I started extending a newly designed compiler and intermediate representation for the Lift language towards a working OpenCL code generation.
+             My main focus was on making previously hidden compiler decisions, such as parallelism and copies between memory regions, explicit on the functional language level.}
+
+
+%----------------------------------------------------------------------------------
+%            presentations
+%----------------------------------------------------------------------------------
+\section{Presentations}
+%    \cventry{MM/YYYY}
+%            {what}{}{}{}
+%            {where}
+    \cventry{04/2019}
+            {\normalfont{Talk: \textit{Generating Efficient FFT GPU Code with Lift}}}{}{}{}
+            {International Workshop on Functional High-Performance and Numerical Computing (FHPNC), Berlin, Germany}
+    \cventry{07/2019}
+            {\normalfont{Talk: \textit{Generating Efficient FFT Code for GPU from High-Level, Pattern-Based Abstractions}}}{}{}{}
+            {International Symposium on High-Level Parallel Programming and Applications (HLPP), Linköping, Sweden}
+    \cventry{02/2019}
+            {\normalfont{Invited Talk: \textit{Programming Specialized Hardware Using Lift}}}{}{}{}
+            {Edinburgh Parallel Computing Centre (EPCC), Edinburgh, UK}
 
 %----------------------------------------------------------------------------------
 %            research projects
@@ -143,41 +196,27 @@ The aim of KETTI is to formalize the preparation of teaching assistants to activ
 %----------------------------------------------------------------------------------
 %            academic events
 %----------------------------------------------------------------------------------
-\section{Attended Academic Events}
-\cvitem{12/2015}{PRACE course -- \textit{Advanced Parallel Programming with MPI and OpenMP}, Jülich Supercomputing Centre, Germany}
-
-\cvitem{03/2015}{BTW -- \textit{16th Conference on Database Systems for Business, Technology, and Web}, Hamburg, Germany}
+\section{Attended Academic Events And Scientific Committees}
+    \cvitem{2019}{Artifact Evaluation Committee -- CGO 2020}
+    \cvitem{}{FHPNC -- \textit{International Workshop on Functional High-Performance and Numerical Computing}, Berlin, Germany}
+    \cvitem{}{ICFP -- \textit{International Conference on Functional Programming}, Berlin, Germany}
+    \cvitem{}{SPLV -- \textit{Scottish Summer School on Programming Languages and Verification}, Glasgow, UK}
+    \cvitem{}{ACACES Summer School (organized by HiPEAC) -- \textit{Fifteenth International Summer School on Advanced Computer Architecture and Compilation for High-Performance and Embedded Systems}, Fiuggi, Italy}
+    \cvitem{}{HLPP -- \textit{International Symposium on High-Level Parallel Programming and Applications}, Linköping, Sweden}
+    \cvitem{}{CSW (organized by HiPEAC) -- \textit{Computing Systems Week}, Edinburgh, UK}
+    \cvitem{}{SPLS -- \textit{Scottish Programming Languages Seminar}, St. Andrews, UK}
+    \cvitem{2015}{PRACE course -- \textit{Advanced Parallel Programming with MPI and OpenMP}, Jülich Supercomputing Centre, Germany}
+    \cvitem{}{BTW -- \textit{16th Conference on Database Systems for Business, Technology, and Web}, Hamburg, Germany}
 
 %----------------------------------------------------------------------------------
 %            teaching
 %----------------------------------------------------------------------------------
 \section{Teaching}
-  \cvitem{Winter 2018}{Teaching assistant for the course: \textit{Introduction to Java}}
-	\cvitem{Winter 2014}{Student teaching assistant for the course: \textit{Introduction to Programming}}
-  \cvitem{Summer 2014}{Student teaching assistant for the course: \textit{Data Structures and Algorithms}}
-
-%----------------------------------------------------------------------------------
-%            technical skills
-%----------------------------------------------------------------------------------
-\section{Technical Skills}
-	\cventry{Programming Languages}
-					{Scala, C/C++, Java, Python}{}{}{}
-					{Experiences:
-					 Fast Fourier Transforms in Lift (Scala),
-           Python C-API used for the simulation of interface accesses in the RTF Multicast Module,
-					 Profiling library for OpenCL programs (C++),
-				 	 SDN-based Multicast Module for the Real-Time Framework (C/C++),
-					 Implementation of the WiPo architecture (Java)
-					}
-
-	\cventry{Parallel Programming}
-					{OpenCL, CUDA, OpenMP, MPI}{}{}{}
-					{Experience:
-					 Performance portability evaluation of OpenCL and CUDA Kernels on NVIDIA GPUs. JIT compilation of a DSL using LLVM and CUDA Driver API.
-					}
-
-\cvline{}{}{}
-\cvline{}{}{}
-\cvline{}{}{}
- 
+  \cvitem{Winter '20}{Supervised a student project: \textit{Developing a CUDA Backend for Lift Targeting TensorCores}}
+  \cvitem{Winter '20}{Teaching assistant for the course: \textit{Introduction to Programming with Java}}
+  \cvitem{Summer '19}{Teaching assistant for the course: \textit{Distributed Systems}}
+  \cvitem{Summer '19}{Teaching assistant for the course: \textit{Introduction to Programming with C and C++}}
+  \cvitem{Winter '19}{Teaching assistant for the course: \textit{Introduction to Programming with Java and Haskell}}
+  \cvitem{Winter '15}{Student assistant for the course: \textit{Introduction to Programming}}
+  \cvitem{Summer '14}{Student assistant for the course: \textit{Data Structures and Algorithms}}
 \end{document}
